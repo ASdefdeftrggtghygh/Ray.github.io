@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدرسة الحارث بن كلدة</title>
+    <style>
+        /* الخطوط والألوان الأساسية */
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #f8f9fa;
+            color: #333;
+            font-size: 1rem; /* وحدة قياس مرنة */
+        }
+
+        /* تأثير الدخول */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1b5e20;
+            z-index: 1000;
+            animation: slideIn 2s forwards;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+
+        /* الهيدر */
+        header {
+            background-color: #1b5e20;
+            color: #fff;
+            text-align: center;
+            padding: 3rem 2rem; /* حجم مرن */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            margin: 10px 0 0;
+        }
+
+        /* القائمة الجانبية */
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 3rem;
+            height: 3rem;
+            background-color: #1b5e20;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .menu-toggle span {
+            font-size: 2rem;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #388e3c;
+            color: #fff;
+            box-shadow: -2px 0 6px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            padding-top: 6rem; /* حجم مرن */
+        }
+
+        .side-menu a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            padding: 1.2rem 1.5rem;
+            font-size: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+        }
+
+        .side-menu a:hover {
+            background-color: #1b5e20;
+        }
+
+        .side-menu.active {
+            right: 0;
+        }
+
+        /* المحتوى */
+        .content {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: auto;
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        .content h2 {
+            color: #1b5e20;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .content p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: #1b5e20;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            font-size: 1rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Media Queries for responsiveness */
+
+        @media screen and (max-width: 1024px) {
+            /* تعديل الأحجام للأجهزة اللوحية والشاشات الصغيرة */
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1.125rem;
+            }
+
+            .menu-toggle span {
+                font-size: 1.75rem;
+            }
+
+            .side-menu a {
+                font-size: 1rem;
+                padding: 1rem 1.2rem;
+            }
+
+            .content h2 {
+                font-size: 1.75rem;
+            }
+
+            .content p {
+                font-size: 1rem;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            /* تعديل الأحجام للهواتف المتوسطة والشاشات الصغيرة */
+            header h1 {
+                font-size: 1.75rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .menu-toggle span {
+                font-size: 1.5rem;
+            }
+
+            .side-menu a {
+                font-size: 1rem;
+                padding: 1rem 1.5rem;
+            }
+
+            .content h2 {
+                font-size: 1.5rem;
+            }
+
+            .content p {
+                font-size: 1rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            /* تعديل الأحجام للهواتف الصغيرة */
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header p {
+                font-size: 0.875rem;
+            }
+
+            .menu-toggle span {
+                font-size: 1.25rem;
+            }
+
+            .side-menu a {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+
+            .content h2 {
+                font-size: 1.25rem;
+            }
+
+            .content p {
+                font-size: 0.875rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="overlay"></div>
+
+<header>
+    <h1>مدرسة الحارث بن كلدة</h1>
+    <p>التفوق هو غايتنا، والإبداع هو طريقنا</p>
+</header>
+
+<button class="menu-toggle" id="menuToggle">
+    <span>&#9776;</span>
+</button>
+
+<div class="side-menu" id="sideMenu">
+    <a data-target="home">الصفحة الرئيسية</a>
+    <a data-target="students">تكريم الطلاب</a>
+    <a data-target="teachers">غرفة المعلمين</a>
+    <a data-target="contact">تواصل معنا</a>
+</div>
+
+<div class="content active" id="home">
+    <h2>الصفحة الرئيسية</h2>
+    <p>مرحبًا بكم في مدرسة الحارث بن كلدة. نحن ملتزمون بتوفير بيئة تعليمية متميزة للطلاب. هنا نحتفل بتفوق طلابنا، ونسعى دائمًا لتحقيق النجاح المستدام في مختلف المجالات.</p>
+</div>
+
+<div class="content" id="students">
+    <h2>تكريم الطلاب</h2>
+    <p>نحتفي بطلابنا المتميزين الذين أثبتوا تفوقهم في المجالات الأكاديمية والأنشطة.</p>
+</div>
+
+<div class="content" id="teachers">
+    <h2>غرفة المعلمين</h2>
+    <p>هذه الصفحة مخصصة للمعلمين، وتحتوي على الجداول والتقارير وأدوات التواصل مع الإدارة.</p>
+</div>
+
+<div class="content" id="contact">
+    <h2>تواصل معنا</h2>
+    <p>للتواصل مع إدارة المدرسة، يرجى الاتصال على الرقم: <strong>0545123564</strong>.</p>
+</div>
+
+<footer>
+    <p>&copy; 2024 مدرسة الحارث بن كلدة. جميع الحقوق محفوظة.</p>
+</footer>
+
+<script>
+    // التحكم في القائمة الجانبية
+    const menuToggle = document.getElementById('menuToggle');
+    const sideMenu = document.getElementById('sideMenu');
+    const contentSections = document.querySelectorAll('.content');
+    const menuLinks = document.querySelectorAll('.side-menu a');
+
+    // فتح وإغلاق القائمة الجانبية
+    menuToggle.addEventListener('click', () => {
+        sideMenu.classList.toggle('active');
+    });
+
+    // إظهار القسم المطلوب عند الضغط على الرابط
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // إخفاء جميع الأقسام
+            contentSections.forEach(section => section.classList.remove('active'));
+            
+            // إظهار القسم المطلوب
+            const target = link.getAttribute('data-target');
+            document.getElementById(target).classList.add('active');
+
+            // إغلاق القائمة الجانبية
+            sideMenu.classList.remove('active');
+        });
+    });
+</script>
+
+</body>
+</html>
