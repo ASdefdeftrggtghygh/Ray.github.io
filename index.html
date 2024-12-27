@@ -15,7 +15,7 @@
             overflow-x: hidden;
             background-color: #f8f9fa;
             color: #333;
-            font-size: 1rem; /* وحدة قياس مرنة */
+            font-size: 1rem;
         }
 
         /* تأثير الدخول */
@@ -44,7 +44,7 @@
             background-color: #1b5e20;
             color: #fff;
             text-align: center;
-            padding: 3rem 2rem; /* حجم مرن */
+            padding: 3rem 2rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -92,7 +92,7 @@
             box-shadow: -2px 0 6px rgba(0, 0, 0, 0.2);
             transition: right 0.3s ease;
             z-index: 1000;
-            padding-top: 6rem; /* حجم مرن */
+            padding-top: 6rem;
         }
 
         .side-menu a {
@@ -136,6 +136,39 @@
             line-height: 1.8;
         }
 
+        /* تكريم الطلاب */
+        .student-award {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .student-award img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .student-award h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .student-award p {
+            font-size: 1.125rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .student-award .reason {
+            font-size: 1rem;
+            color: #388e3c;
+        }
+
         /* الفوتر */
         footer {
             background-color: #1b5e20;
@@ -151,9 +184,7 @@
         }
 
         /* Media Queries for responsiveness */
-
         @media screen and (max-width: 1024px) {
-            /* تعديل الأحجام للأجهزة اللوحية والشاشات الصغيرة */
             header h1 {
                 font-size: 2rem;
             }
@@ -181,7 +212,6 @@
         }
 
         @media screen and (max-width: 768px) {
-            /* تعديل الأحجام للهواتف المتوسطة والشاشات الصغيرة */
             header h1 {
                 font-size: 1.75rem;
             }
@@ -209,7 +239,6 @@
         }
 
         @media screen and (max-width: 480px) {
-            /* تعديل الأحجام للهواتف الصغيرة */
             header h1 {
                 font-size: 1.5rem;
             }
@@ -265,7 +294,26 @@
 
 <div class="content" id="students">
     <h2>تكريم الطلاب</h2>
-    <p>نحتفي بطلابنا المتميزين الذين أثبتوا تفوقهم في المجالات الأكاديمية والأنشطة.</p>
+
+    <!-- خانة البحث -->
+    <input type="text" id="searchInput" placeholder="ابحث عن اسم الطالب" onkeyup="searchStudent()">
+
+    <!-- تكريم الطلاب -->
+    <div class="student-award" data-name="أحمد ">
+        <img src="student_image1.jpg" alt="صورة الطالب 1"> <!-- ضع رابط الصورة هنا -->
+        <h3>أحمد </h3>
+        <p>طالب متميز </p>
+        <p class="reason">سبب التكريم: تفوقه الدراسي.</p>
+    </div>
+
+    <div class="student-award" data-name="محمد">
+        <img src="student_image2.jpg" alt="صورة الطالب 2"> <!-- ضع رابط الصورة هنا -->
+        <h3>محمد </h3>
+        <p>طالب متميز</p>
+        <p class="reason">سبب التكريم: تفوقه الدراسي .</p>
+    </div>
+
+    <!-- إضافة المزيد من الطلاب هنا -->
 </div>
 
 <div class="content" id="teachers">
@@ -308,6 +356,22 @@
             sideMenu.classList.remove('active');
         });
     });
+
+    // البحث عن الطالب
+    function searchStudent() {
+        const input = document.getElementById('searchInput');
+        const filter = input.value.toLowerCase();
+        const students = document.querySelectorAll('.student-award');
+
+        students.forEach(student => {
+            const name = student.getAttribute('data-name').toLowerCase();
+            if (name.includes(filter)) {
+                student.style.display = 'flex'; // عرض الطالب
+            } else {
+                student.style.display = 'none'; // إخفاء الطالب
+            }
+        });
+    }
 </script>
 
 </body>
